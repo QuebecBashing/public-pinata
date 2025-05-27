@@ -1,4 +1,4 @@
-module public-pinata
+module bashit
 
 go 1.22.7
 
