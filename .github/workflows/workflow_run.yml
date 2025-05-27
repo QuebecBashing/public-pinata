@@ -1,14 +1,30 @@
-name: Poutine Level 2 - Smoker
+name: workflow_run
 on:
   workflow_run:
-    workflows: ["trigger"]
+    workflows:
+      - discussion
+      - fork
+      - gollum
+      - issue_comment
+      - issue
+      - milestone
+      - pull_request
+      - pull_request_review
+      - pull_request_review_comment
+      - pull_request_target
+      - push
     
 permissions: {}
 
 jobs:
-  smoker:
-    runs-on: ubuntu-latest
+  one:
+    runs-on: ubuntu-22.04
     steps:
-      - name: test
-        run: |
-          echo ${{ github.workflow_ref }}
+      - name: Event
+        env:
+          WORKFLOW_NAME: ${{ github.event.workflow.name }}
+        run: echo "$WORKFLOW_NAME"
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
