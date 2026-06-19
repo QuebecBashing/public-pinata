@@ -1,4 +1,4 @@
-name: upload artifact
+name: trigger
 on:
   pull_request:
 
@@ -6,13 +6,10 @@ jobs:
   artifact_1:
     runs-on: ubuntu-latest
     steps:
-      - run: sleep 15s
-      - uses: actions/checkout@v6
-        with:
-          repository: ${{ github.event.pull_request.head.repo.full_name }}
-          ref: ${{ github.event.pull_request.head.ref }}
+      - run: | 
+          echo "id" > test.sh
       - name: Upload
         uses: actions/upload-artifact@v4
         with:
-          name: content
-          path: test.txt
+          name: my-artifact
+          path: test.sh
