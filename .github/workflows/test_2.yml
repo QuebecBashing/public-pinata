@@ -3,4 +3,4 @@ on: workflow_dispatch
 
 jobs:
   call:
-    uses: QuebecBashing/public-pinata/.github/workflows/oidc-claims.yml@main
+    uses: QuebecBashing/public-pinata/.github/workflows/test.yml@main
