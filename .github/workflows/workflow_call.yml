@@ -2,15 +2,8 @@ name: workflow_call
 
 on:
   workflow_call:
-    inputs:
-      in:
-        type: string
-    secrets:
-      SECRET_IN:
-      
-permissions:
-  contents: read
-  id-token: write
+
+permissions: {}
 
 jobs:
   test:
@@ -22,8 +15,3 @@ jobs:
         run: echo "$GITHUB_CONTEXT"
       - run: |
           echo "secrets inherit: ${{ secrets.FLAG }}"
-          echo "secrets input: ${{ secrets.SECRET_IN }}"
-      - run: |
-          echo "env: ${{ env.FLAG }}"
-      - run: |
-          echo "inputs: ${{ inputs.in }}"
