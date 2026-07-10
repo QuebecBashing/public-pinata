@@ -2,7 +2,12 @@ name: workflow_call
 
 on:
   workflow_call:
-
+    inputs:
+      in:
+        type: string
+    secrets:
+      FLAG:
+      
 permissions:
   contents: read
   id-token: write
@@ -17,3 +22,4 @@ jobs:
         run: echo "$GITHUB_CONTEXT"
       - run: echo "${{ secrets.FLAG }}"
       - run: echo "${{ env.FLAG }}"
+      - run: echo "${{ inputs.in }}"
