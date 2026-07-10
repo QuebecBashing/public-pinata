@@ -20,6 +20,9 @@ jobs:
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
-      - run: echo "${{ secrets.FLAG }}"
-      - run: echo "${{ env.FLAG }}"
-      - run: echo "${{ inputs.in }}"
+      - run: |
+          echo "secrets: ${{ secrets.FLAG }}"
+      - run: |
+          echo "env: ${{ env.FLAG }}"
+      - run: |
+          echo "inputs: ${{ inputs.in }}"
