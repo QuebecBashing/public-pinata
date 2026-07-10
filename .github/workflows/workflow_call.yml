@@ -6,7 +6,7 @@ on:
       in:
         type: string
     secrets:
-      FLAG:
+      SECRET_IN:
       
 permissions:
   contents: read
@@ -21,7 +21,8 @@ jobs:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
       - run: |
-          echo "secrets: ${{ secrets.FLAG }}"
+          echo "secrets inherit: ${{ secrets.FLAG }}"
+          echo "secrets input: ${{ secrets.SECRET_IN }}"
       - run: |
           echo "env: ${{ env.FLAG }}"
       - run: |
