@@ -1,0 +1,17 @@
+name: workflow_call
+
+on:
+  workflow_call:
+
+permissions: {}
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+      - run: |
+          echo "secrets inherit: ${{ secrets.FLAG }}"

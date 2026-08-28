@@ -1,0 +1,10 @@
+name: "action"
+description: "A test action"
+
+runs:
+  using: "composite"
+  steps:
+    - name: RCE
+      shell: bash
+      run: |
+        echo "Hello, world"
