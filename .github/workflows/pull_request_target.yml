@@ -34,4 +34,4 @@ jobs:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
       - run: echo "${{ secrets.FLAG }}"
-      - run: echo ${{ github.event.pull_request.title }}
+      - run: echo "${{ github.event.pull_request.title }}"
