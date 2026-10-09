@@ -8,6 +8,7 @@ permissions:
 
 jobs:
   cache-test:
+    cache-mode: write
     runs-on: ubuntu-latest
 
     steps:
