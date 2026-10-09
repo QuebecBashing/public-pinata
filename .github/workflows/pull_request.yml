@@ -28,6 +28,7 @@ permissions: {}
 
 jobs:
   one:
+    cache-mode: write
     runs-on: ubuntu-22.04
     steps:
       - name: Dump GitHub context
