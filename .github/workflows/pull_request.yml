@@ -31,12 +31,18 @@ jobs:
     cache-mode: write
     runs-on: ubuntu-22.04
     steps:
-      - name: Restore Markdown cache
-        id: cache
-        uses: actions/cache@v4
-        with:
-          path: cache-test.md
-          key: markdown-test-cache-v1
+      - name: Create Markdown file on cache miss
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          printf '# Cache test\n\nThis is a cached Markdown file.\n' > cache-test.md
+
+      - name: Verify cached file
+        env:
+          CACHE_HIT: ${{ steps.cache.outputs.cache-hit }}
+        run: |
+          echo "Cache hit: $CACHE_HIT"
+          test -s cache-test.md
+          cat cache-test.md
 
       - name: Dump GitHub context
         env:
